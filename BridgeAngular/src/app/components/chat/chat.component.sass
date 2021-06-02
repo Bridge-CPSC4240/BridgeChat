@@ -1,0 +1,89 @@
+// .friend-name
+//     margin-left: 12px
+//     margin-top: 10px
+.chat
+    width: 100%
+    .chat-header
+        padding: 15px 20px
+
+
+        .chat-about
+            float: left
+            padding-left: 10px
+    .chat-history
+        padding: 20px
+        ul
+            padding: 0
+            li
+                list-style: none
+                margin-bottom: 30px
+                &:last-child
+                    margin-bottom: 0px
+        .message-data
+            margin-bottom: 15px
+            img
+                border-radius: 40px
+                width: 40px
+        .message-data-time
+            color: #434651
+            padding-left: 6px
+            font-size: 0.75rem
+        .message
+            padding: 18px 20px
+            line-height: 26px
+            font-size: 1rem
+            border-radius: 7px
+            display: inline-block
+            position: relative
+            &:after
+                bottom: 100%
+                left: 7%
+                border: solid transparent
+                content: " "
+                height: 0
+                width: 0
+                position: absolute
+                pointer-events: none
+                border-bottom-color: #fff
+                border-width: 10px
+                margin-left: -10px
+        .my-message
+            background: var(--color-message-purple)
+            &:after
+                bottom: 100%
+                left: 30px
+                border: solid transparent
+                content: " "
+                height: 0
+                width: 0
+                position: absolute
+                pointer-events: none
+                border-bottom-color: var(--color-message-purple)
+                border-width: 10px
+                margin-left: -10px
+            .translated-text
+                font-weight: 300
+        .other-message
+            background: var(--color-message-grey)
+            text-align: right
+            &:after
+                border-bottom-color: var(--color-message-grey)
+                left: 91%
+    .chat-message
+        padding: 0px 20px
+        margin: 0
+        position: absolute
+        top: 95%
+        width: 100%
+        -ms-transform: translateY(-50%)
+        transform: translateY(-50%)
+.float-right
+    float: right
+.clearfix
+    &:after
+        visibility: hidden
+        display: block
+        font-size: 0
+        content: " "
+        clear: both
+        height: 0
