@@ -82,6 +82,7 @@ var App = /** @class */ (function () {
             var id = req.params.userId;
             console.log("Query preferred language for userId: " + id);
             _this.User.retrieveLanguage(res, { userId: id });
+            console.log(res);
         });
         // route to return JSON of chat objects
         router.get("/chats", function (req, res) {
