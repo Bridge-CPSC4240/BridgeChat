@@ -59,7 +59,7 @@ class App {
     let router = express.Router();
 
     //route to return JSON of all users
-    router.get("/app/users", (req, res) => {
+/*     router.get("/app/users", (req, res) => {
       console.log("Query all users");
       this.User.retrieveAllUsers(res);
     });
@@ -105,7 +105,7 @@ class App {
       console.log("Query preferred language for userId: " + id);
       this.User.retrieveLanguage(res, { userId: id });
       console.log(res);
-    });
+    }); */
 
     // route to return JSON of chat objects
     router.get("/app/chats", (req, res) => {
@@ -113,7 +113,7 @@ class App {
       this.Chat.retrieveAllChats(res);
     });
 
-    // route to return a unique chat based on ID
+/*     // route to return a unique chat based on ID
     router.get("/app/chats/:chatId", (req, res) => {
       var id = req.params.chatId;
       console.log("Query a chat with id:" + id);
@@ -159,8 +159,8 @@ class App {
       console.log(req.body);
       this.Chat.createChat(req.body);
       res.send("201 CREATED");
-    });
-
+    }); */
+    
     this.expressApp.use("/", router);
     this.expressApp.use("/app/json/", express.static(__dirname + "/app/json"));
     this.expressApp.use("/images", express.static(__dirname + "/img"));
