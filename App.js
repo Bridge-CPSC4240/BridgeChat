@@ -13,6 +13,8 @@ var UserModel_1 = require("./model/UserModel");
 var MessageModel_1 = require("./model/MessageModel");
 var ChatModel_1 = require("./model/ChatModel");
 var FriendListModel_1 = require("./model/FriendListModel");
+var session = require("express-session");
+var cookieParser = require("cookie-parser");
 //import {DataAccess} from './DataAccess';
 // Creates and configures an ExpressJS web server.
 var App = /** @class */ (function () {
@@ -112,7 +114,10 @@ var App = /** @class */ (function () {
             var chat_id = req.params.chatId;
             var message_id = req.params.messageId;
             console.log("Query messageId " + message_id + " from chatId:" + chat_id);
-            _this.Message.retrieveSingleMessageByChatId(res, { messageId: message_id, chatId: chat_id });
+            _this.Message.retrieveSingleMessageByChatId(res, {
+                messageId: message_id,
+                chatId: chat_id
+            });
         });
         // route to post a JSON message
         router.post("/messages/:chatId", function (req, res) {
@@ -132,6 +137,8 @@ var App = /** @class */ (function () {
         this.expressApp.use("/app/json/", express.static(__dirname + "/app/json"));
         this.expressApp.use("/images", express.static(__dirname + "/img"));
         this.expressApp.use("/", express.static(__dirname + "/dist/BridgeAngular"));
+        this.expressApp.use(session({ secret: "keyboard cat" }));
+        this.expressApp.use(cookieParser());
         // this.expressApp.use("/", express.static(__dirname + "/pages"));
     };
     return App;
