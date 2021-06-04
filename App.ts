@@ -10,6 +10,8 @@ import { UserModel } from "./model/UserModel";
 import { MessageModel } from "./model/MessageModel";
 import { ChatModel } from "./model/ChatModel";
 import { FriendListModel } from "./model/FriendListModel";
+import * as session from "express-session";
+import * as cookieParser from "cookie-parser";
 
 //import {DataAccess} from './DataAccess';
 
@@ -73,34 +75,34 @@ class App {
       console.log("Query a user's name with id:" + id);
       this.User.retrieveUserName(res, { userId: id });
     });
-    
+
     //route to return JSON of all friends for a single user
     router.get("/users/:userId/friends", (req, res) => {
-        var id = req.params.userId;
-        console.log("Query all friends for userId: " + id);
-        this.FriendList.retrieveAllFriendsByUserId(res, { userId: id });
+      var id = req.params.userId;
+      console.log("Query all friends for userId: " + id);
+      this.FriendList.retrieveAllFriendsByUserId(res, { userId: id });
     });
 
     //route to return JSON of all messages from single user
     router.get("/users/:userId/messages", (req, res) => {
-        var id = req.params.userId;
-        console.log("Query all messages for userId: " + id);
-        this.Message.retrieveAllMessagesByUserId(res, { userId: id });
+      var id = req.params.userId;
+      console.log("Query all messages for userId: " + id);
+      this.Message.retrieveAllMessagesByUserId(res, { userId: id });
     });
-    
+
     //route to return JSON of all chats from single user
     router.get("/users/:userId/chats", (req, res) => {
-        var id = req.params.userId;
-        console.log("Query all chats for userId: " + id);
-        this.Chat.retrieveAllChatsByUserId(res, id);
+      var id = req.params.userId;
+      console.log("Query all chats for userId: " + id);
+      this.Chat.retrieveAllChatsByUserId(res, id);
     });
 
     // route to return JSON of user's preferred language
     router.get("/users/:userId/language", (req, res) => {
-        var id = req.params.userId;
-        console.log("Query preferred language for userId: " + id);
-        this.User.retrieveLanguage(res, { userId: id });
-        console.log(res);
+      var id = req.params.userId;
+      console.log("Query preferred language for userId: " + id);
+      this.User.retrieveLanguage(res, { userId: id });
+      console.log(res);
     });
 
     // route to return JSON of chat objects
@@ -135,7 +137,10 @@ class App {
       var chat_id = req.params.chatId;
       var message_id = req.params.messageId;
       console.log("Query messageId " + message_id + " from chatId:" + chat_id);
-      this.Message.retrieveSingleMessageByChatId(res, { messageId: message_id, chatId: chat_id });
+      this.Message.retrieveSingleMessageByChatId(res, {
+        messageId: message_id,
+        chatId: chat_id,
+      });
     });
 
     // route to post a JSON message
@@ -158,6 +163,9 @@ class App {
     this.expressApp.use("/app/json/", express.static(__dirname + "/app/json"));
     this.expressApp.use("/images", express.static(__dirname + "/img"));
     this.expressApp.use("/", express.static(__dirname + "/dist/BridgeAngular"));
+    this.expressApp.use(session({ secret: "keyboard cat" }));
+    this.expressApp.use(cookieParser());
+
     // this.expressApp.use("/", express.static(__dirname + "/pages"));
   }
 }
