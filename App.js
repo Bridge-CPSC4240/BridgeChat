@@ -39,6 +39,8 @@ var App = /** @class */ (function () {
             res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
             next();
         });
+        this.expressApp.use(session({ secret: "keyboard cat" }));
+        this.expressApp.use(cookieParser());
     };
     // Configure API endpoints.
     App.prototype.routes = function () {
@@ -137,8 +139,6 @@ var App = /** @class */ (function () {
         this.expressApp.use("/app/json/", express.static(__dirname + "/app/json"));
         this.expressApp.use("/images", express.static(__dirname + "/img"));
         this.expressApp.use("/", express.static(__dirname + "/dist/BridgeAngular"));
-        this.expressApp.use(session({ secret: "keyboard cat" }));
-        this.expressApp.use(cookieParser());
         // this.expressApp.use("/", express.static(__dirname + "/pages"));
     };
     return App;
