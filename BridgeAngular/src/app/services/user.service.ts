@@ -11,10 +11,10 @@ export class UserService {
 
     // get the name of a specific userId
     getName(userId: number) {
-        return this.http.get<string>(this.hostUrl + `users/${userId}/name`);
+        return this.http.get<string>(this.hostUrl + `/app/users/${userId}/name`);
     }
 
     getLanguage(userId: number) {
-        return this.http.get<string>(this.hostUrl + `users/${userId}/language`);
+        return this.http.get<string>(this.hostUrl + `/app/users/${userId}/language`);
     }
 }

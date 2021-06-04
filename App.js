@@ -45,72 +45,72 @@ var App = /** @class */ (function () {
         var _this = this;
         var router = express.Router();
         //route to return JSON of all users
-        router.get("/users", function (req, res) {
+        router.get("/app/users", function (req, res) {
             console.log("Query all users");
             _this.User.retrieveAllUsers(res);
         });
         //route to return JSON of a single user
-        router.get("/users/:userId", function (req, res) {
+        router.get("/app/users/:userId", function (req, res) {
             var id = req.params.userId;
             console.log("Query a user with id:" + id);
             _this.User.retrieveUser(res, { userId: id });
         });
         //route to return JSON of user's name
-        router.get("/users/:userId/name", function (req, res) {
+        router.get("/app/users/:userId/name", function (req, res) {
             var id = req.params.userId;
             console.log("Query a user's name with id:" + id);
             _this.User.retrieveUserName(res, { userId: id });
         });
         //route to return JSON of all friends for a single user
-        router.get("/users/:userId/friends", function (req, res) {
+        router.get("/app/users/:userId/friends", function (req, res) {
             var id = req.params.userId;
             console.log("Query all friends for userId: " + id);
             _this.FriendList.retrieveAllFriendsByUserId(res, { userId: id });
         });
         //route to return JSON of all messages from single user
-        router.get("/users/:userId/messages", function (req, res) {
+        router.get("/app/users/:userId/messages", function (req, res) {
             var id = req.params.userId;
             console.log("Query all messages for userId: " + id);
             _this.Message.retrieveAllMessagesByUserId(res, { userId: id });
         });
         //route to return JSON of all chats from single user
-        router.get("/users/:userId/chats", function (req, res) {
+        router.get("/app/users/:userId/chats", function (req, res) {
             var id = req.params.userId;
             console.log("Query all chats for userId: " + id);
             _this.Chat.retrieveAllChatsByUserId(res, id);
         });
         // route to return JSON of user's preferred language
-        router.get("/users/:userId/language", function (req, res) {
+        router.get("/app/users/:userId/language", function (req, res) {
             var id = req.params.userId;
             console.log("Query preferred language for userId: " + id);
             _this.User.retrieveLanguage(res, { userId: id });
             console.log(res);
         });
         // route to return JSON of chat objects
-        router.get("/chats", function (req, res) {
+        router.get("/app/chats", function (req, res) {
             console.log("Query all chats:");
             _this.Chat.retrieveAllChats(res);
         });
         // route to return a unique chat based on ID
-        router.get("/chats/:chatId", function (req, res) {
+        router.get("/app/chats/:chatId", function (req, res) {
             var id = req.params.chatId;
             console.log("Query a chat with id:" + id);
             _this.Chat.retrieveChat(res, { chatId: id });
         });
         //route to return JSON of messages by chatID
-        router.get("/chats/:chatId/messages", function (req, res) {
+        router.get("/app/chats/:chatId/messages", function (req, res) {
             var id = req.params.chatId;
             console.log("Query messages from chatId:" + id);
             _this.Message.retrieveAllMessagesByChatId(res, { chatId: id });
         });
         //route to return JSON of last message by chatID
-        router.get("/chats/:chatId/lastMessage", function (req, res) {
+        router.get("/app/chats/:chatId/lastMessage", function (req, res) {
             var id = req.params.chatId;
             console.log("Query last message from chatId:" + id);
             _this.Message.retrieveLastMessageByChatId(res, { chatId: id });
         });
         //route to return JSON of a single message in a single chat
-        router.get("chats/:chatId/messages/:messageId", function (req, res) {
+        router.get("/app/chats/:chatId/messages/:messageId", function (req, res) {
             var chat_id = req.params.chatId;
             var message_id = req.params.messageId;
             console.log("Query messageId " + message_id + " from chatId:" + chat_id);
@@ -120,14 +120,14 @@ var App = /** @class */ (function () {
             });
         });
         // route to post a JSON message
-        router.post("/messages/:chatId", function (req, res) {
+        router.post("/app/messages/:chatId", function (req, res) {
             console.log("testing to see if message was added to database");
             console.log(req.body);
             _this.Message.sendMessage(req.body);
             res.send("201 CREATED");
         });
         // route to post a JSON chat
-        router.post("/chats/", function (req, res) {
+        router.post("/app/chats/", function (req, res) {
             console.log("testing to see if chat was added to database");
             console.log(req.body);
             _this.Chat.createChat(req.body);

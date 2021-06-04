@@ -571,17 +571,25 @@ input.mat-input-element {
   width: 100%;
   overflow-y: scroll;
 }
+@-webkit-keyframes cdk-text-field-autofill-start {
+  /*!*/
+}
 @keyframes cdk-text-field-autofill-start {
+  /*!*/
+}
+@-webkit-keyframes cdk-text-field-autofill-end {
   /*!*/
 }
 @keyframes cdk-text-field-autofill-end {
   /*!*/
 }
 .cdk-text-field-autofill-monitored:-webkit-autofill {
-  animation: cdk-text-field-autofill-start 0s 1ms;
+  -webkit-animation: cdk-text-field-autofill-start 0s 1ms;
+          animation: cdk-text-field-autofill-start 0s 1ms;
 }
 .cdk-text-field-autofill-monitored:not(:-webkit-autofill) {
-  animation: cdk-text-field-autofill-end 0s 1ms;
+  -webkit-animation: cdk-text-field-autofill-end 0s 1ms;
+          animation: cdk-text-field-autofill-end 0s 1ms;
 }
 textarea.cdk-textarea-autosize {
   resize: none;
@@ -1562,6 +1570,12 @@ th.mat-header-cell, td.mat-cell, td.mat-footer-cell {
 .mat-input-element {
   caret-color: #9e9e9e;
 }
+.mat-input-element::-moz-placeholder {
+  color: rgba(0, 0, 0, 0.42);
+}
+.mat-input-element:-ms-input-placeholder {
+  color: rgba(0, 0, 0, 0.42);
+}
 .mat-input-element::placeholder {
   color: rgba(0, 0, 0, 0.42);
 }
@@ -2302,5 +2316,3 @@ body {
   position: relative !important;
   display: block !important;
 }
-
-/*# sourceMappingURL=styles.css.map*/
