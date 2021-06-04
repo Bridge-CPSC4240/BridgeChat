@@ -13,7 +13,7 @@ export class FriendListService {
 
     // retrieve a list of all friendIds using userId
     getFriendList(userId: number) {
-        return this.http.get<IFriendListModel>(this.hostUrl + `/app/users/${userId}/friends`);
+        return this.http.get<IFriendListModel>(this.hostUrl + `app/users/${userId}/friends`);
     }
 
 }

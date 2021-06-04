@@ -12,15 +12,15 @@ export class MessageService {
 
     // get all messages for a chatId
     getMessagesfromChat(chatId: number) {
-        return this.http.get<IMessageModel[]>(this.hostUrl + `/app/chats/${chatId}/messages`);
+        return this.http.get<IMessageModel[]>(this.hostUrl + `app/chats/${chatId}/messages`);
     }
 
     // get the single most recent message for a chatId
     getMostRecentMessage(chatId: number) {
-        return this.http.get<string>(this.hostUrl + `/app/chats/${chatId}/lastMessage`);
+        return this.http.get<string>(this.hostUrl + `app/chats/${chatId}/lastMessage`);
     }
 
     sendMessage(message) {
-        return this.http.post(this.hostUrl + '/app/messages/' + message.chatId, message);
+        return this.http.post(this.hostUrl + 'app/messages/' + message.chatId, message);
     }
 }

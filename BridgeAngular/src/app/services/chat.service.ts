@@ -13,11 +13,11 @@ export class ChatService {
 
     // get a single chat using chatId
     getChat(chatId: number) {
-        return this.http.get<IChatModel>(this.hostUrl + `/app/chats/${chatId}`);
+        return this.http.get<IChatModel>(this.hostUrl + `app/chats/${chatId}`);
     }
 
     // get a list of chats using userId
     getChatList(userId: number){
-        return this.http.get<IChatModel[]>(this.hostUrl + `/app/users/${userId}/chats`)
+        return this.http.get<IChatModel[]>(this.hostUrl + `app/users/${userId}/chats`)
     }
 }
