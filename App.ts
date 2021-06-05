@@ -110,7 +110,7 @@ class App {
     // route to return JSON of chat objects
     router.get("/app/chats", (req, res) => {
       console.log("Query all chats:");
-      this.Chat.retrieveAllChats(res);
+      // this.Chat.retrieveAllChats(res);
     });
 
 /*     // route to return a unique chat based on ID

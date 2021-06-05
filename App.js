@@ -44,7 +44,6 @@ var App = /** @class */ (function () {
     };
     // Configure API endpoints.
     App.prototype.routes = function () {
-        var _this = this;
         var router = express.Router();
         //route to return JSON of all users
         /*     router.get("/app/users", (req, res) => {
@@ -97,7 +96,7 @@ var App = /** @class */ (function () {
         // route to return JSON of chat objects
         router.get("/app/chats", function (req, res) {
             console.log("Query all chats:");
-            _this.Chat.retrieveAllChats(res);
+            // this.Chat.retrieveAllChats(res);
         });
         /*     // route to return a unique chat based on ID
             router.get("/app/chats/:chatId", (req, res) => {
